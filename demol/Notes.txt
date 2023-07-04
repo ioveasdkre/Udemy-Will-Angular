@@ -1,0 +1,35 @@
+課程 Git範例網址
+https://github.com/doggy8088/angular-zero/
+https://github.com/doggy8088/angular-zero.git
+
+---------------------------
+
+開發環境
+安裝軟體
+Chocolatey
+https://chocolatey.org/install
+
+開啟 cmd
+choco install -y GoogleChrome git nodejs visualstudiocode notepadplusplus
+
+安裝完重啟 cmd確認是否安裝完
+軟體名稱 -v
+npm -v
+node -v
+git -v
+code -v
+…以此類推
+
+
+安裝 Angular
+npm i -g @angular/cli
+查看版本
+ng version
+
+建立專案
+ng new 專案名稱
+
+cd 進入專案資料夾
+
+執行專案
+npm start
