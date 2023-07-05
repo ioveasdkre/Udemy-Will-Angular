@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PageTeatComponent } from './page-teat/page-teat.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageTeatComponent
   ],
   imports: [
     BrowserModule,
