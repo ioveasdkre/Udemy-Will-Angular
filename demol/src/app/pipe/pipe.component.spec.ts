@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageTeatComponent } from './page-teat.component';
+import { PipeComponent } from './pipe.component';
 
-describe('PageTeatComponent', () => {
-  let component: PageTeatComponent;
-  let fixture: ComponentFixture<PageTeatComponent>;
+describe('PipeComponent', () => {
+  let component: PipeComponent;
+  let fixture: ComponentFixture<PipeComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PageTeatComponent]
+      declarations: [PipeComponent]
     });
-    fixture = TestBed.createComponent(PageTeatComponent);
+    fixture = TestBed.createComponent(PipeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
