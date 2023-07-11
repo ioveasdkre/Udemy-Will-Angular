@@ -17,7 +17,12 @@
         >
           <header class="post-header">
             <h2 class="post-title">
-              <a [href]="item.href">{{ item.title }}</a>
+              <a [href]="item.href">{{
+                item.subject?.title | lowercase | slice : -20
+              }}</a>
+              {{ item.subject?.subtitle }}
+              <!-- {{ item['subject']?.subtitle }}
+              {{ $any(item).subject?.subtitle }} -->
             </h2>
             <div class="post-info clearfix">
               <span class="post-date"

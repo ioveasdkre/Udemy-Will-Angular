@@ -1,10 +1,12 @@
 <!-- UpperCasePipe -->
 <!-- 英文轉大寫 -->
+<!-- https://angular.io/api/common/UpperCasePipe -->
 <div>
   <h1>{{ text | uppercase }}</h1>
 </div>
 
 <!-- LowerCasePipe -->
+<!-- https://angular.io/api/common/LowerCasePipe -->
 <!-- 英文轉小寫 -->
 <div>
   <h1>{{ text | lowercase }}</h1>
@@ -12,6 +14,7 @@
 
 <!-- DecimalPipe -->
 <!-- 根據數位選項和區域設置規則設置值的格式。 區域設置決定組大小和分隔符， 小數點字元和其他特定於區域設置的配置。 -->
+<!-- https://angular.io/api/common/DecimalPipe -->
 <div>
   <p>
     No specified formatting:
@@ -34,38 +37,91 @@
 
 <!-- DecimalPipe -->
 <!-- 將數位轉換為貨幣字串，根據區域設置規則設置格式 確定組大小和分隔符、小數點字元， 以及其他特定於區域設置的配置。 -->
+<!-- https://angular.io/api/common/DecimalPipe -->
 <div>
   <!--output '$0.26'-->
-  <p>A: {{a | currency}}</p>
+  <p>A: {{ a | currency }}</p>
 
   <!--output 'CA$0.26'-->
-  <p>A: {{a | currency:'CAD'}}</p>
+  <p>A: {{ a | currency : "CAD" }}</p>
 
   <!--output 'CAD0.26'-->
-  <p>A: {{a | currency:'CAD':'code'}}</p>
+  <p>A: {{ a | currency : "CAD" : "code" }}</p>
 
   <!--output 'CA$0,001.35'-->
-  <p>B: {{b | currency:'CAD':'symbol':'4.2-2'}}</p>
+  <p>B: {{ b | currency : "CAD" : "symbol" : "4.2-2" }}</p>
 
   <!--output '$0,001.35'-->
-  <p>B: {{b | currency:'CAD':'symbol-narrow':'4.2-2'}}</p>
+  <p>B: {{ b | currency : "CAD" : "symbol-narrow" : "4.2-2" }}</p>
 
   <!--output '0 001,35 CA$'-->
-  <p>B: {{b | currency:'CAD':'symbol':'4.2-2':'fr'}}</p>
+  <p>B: {{ b | currency : "CAD" : "symbol" : "4.2-2" : "fr" }}</p>
 
   <!--output 'CLP1' because CLP has no cents-->
-  <p>B: {{b | currency:'CLP'}}</p>
+  <p>B: {{ b | currency : "CLP" }}</p>
 </div>
 
 <!-- PercentPipe -->
 <!-- 將數字轉換為百分比 字串，根據確定組大小的區域設置規則設置格式，以及 分隔符、小數點字元和其他特定於區域設置的字元 配置。 -->
+<!-- https://angular.io/api/common/PercentPipe -->
 <div>
   <!--output '26%'-->
-  <p>A: {{a | percent}}</p>
+  <p>A: {{ a | percent }}</p>
 
   <!--output '0,134.950%'-->
-  <p>B: {{b | percent:'4.3-5'}}</p>
+  <p>B: {{ b | percent : "4.3-5" }}</p>
 
   <!--output '0 134,950 %'-->
-  <p>B: {{b | percent:'4.3-5':'fr'}}</p>
+  <p>B: {{ b | percent : "4.3-5" : "fr" }}</p>
+</div>
+
+<!-- DatePipe -->
+<!-- 根據區域設置規則設置日期值的格式。 -->
+<!-- https://angular.io/api/common/DatePipe -->
+<div>
+  <p>Today is {{ today | date }}</p>
+  <p>Or if you prefer, {{ today | date : "fullDate" }}</p>
+  <p>The time is {{ today | date : "h:mm a z" }}</p>
+  <p>The time is {{ today | date : "yyyy-MM-dd" }}</p>
+  <p>The time is {{ today | date : "mediumDate" }}</p>
+  <p>The time is {{ today | date : "shortDate" }}</p>
+</div>
+
+<!-- JsonPipe -->
+<!-- 將值轉換為其 JSON 格式表示形式。對調試很有用。 -->
+<!-- https://angular.io/api/common/JsonPipe -->
+<div>
+  <p>Without JSON pipe:</p>
+  <pre>{{ object }}</pre>
+  <p>With JSON pipe:</p>
+  <pre>{{ object | json }}</pre>
+</div>
+
+<!-- SlicePipe -->
+<!-- 創建新的或包含元素的子集（切片）。ArrayString -->
+<!-- https://angular.io/api/common/SlicePipe -->
+<div>
+  <p>
+    {{ str }}[0:4]: '{{ str | slice : 0 : 4 }}' - output is expected to be
+    'abcd'
+  </p>
+  <p>
+    {{ str }}[4:0]: '{{ str | slice : 4 : 0 }}' - output is expected to be ''
+  </p>
+  <p>
+    {{ str }}[-4]: '{{ str | slice : -4 }}' - output is expected to be 'ghij'
+  </p>
+  <p>
+    {{ str }}[-4:-2]: '{{ str | slice : -4 : -2 }}' - output is expected to be
+    'gh'
+  </p>
+  <p>
+    {{ str }}[-100]: '{{ str | slice : -100 }}' - output is expected to be
+    'abcdefghij'
+  </p>
+  <p>{{ str }}[100]: '{{ str | slice : 100 }}' - output is expected to be ''</p>
+  <p>
+    {{ data }}[0:2]: '{{ data | slice : 0 : 2 | json }}' - output is expected to
+    be ''
+  </p>
 </div>
