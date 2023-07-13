@@ -8,12 +8,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PipeComponent } from './pipe/pipe.component';
+import { ArticleModule } from './article/article.module';
 
 registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, PipeComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ArticleModule],
   providers: [],
   bootstrap: [AppComponent],
 })
