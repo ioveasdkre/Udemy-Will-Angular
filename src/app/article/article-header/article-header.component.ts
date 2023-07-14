@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnDestroy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 @Component({
   selector: 'app-article-header',
@@ -8,11 +15,18 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 // 實作 OnInit, OnDestroy
 export class ArticleHeaderComponent implements OnInit, OnDestroy {
-  @Input()
+  @Input() // 輸入
   item: any;
+
+  @Output() // 輸出
+  delete = new EventEmitter<any>(); // 事件發設計
 
   // 建構式
   constructor() {}
+
+  deleteArticle() {
+    this.delete.emit(this.item);
+  }
 
   // 初始化
   ngOnInit(): void {
@@ -24,6 +38,5 @@ export class ArticleHeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
-
   }
 }
