@@ -21,8 +21,19 @@ export class ArticleHeaderComponent implements OnInit, OnDestroy {
   @Output() // 輸出
   delete = new EventEmitter<any>(); // 事件發設計
 
+  @Output() // 輸出
+  titleChanged = new EventEmitter<any>(); // 事件發設計
+
+  isEdit = false;
+  newTitle = '';
+
   // 建構式
   constructor() {}
+
+  doEdit(title: string) {
+    this.newTitle = title;
+    this.titleChanged.emit({ id: this.item.id, title });
+  }
 
   deleteArticle() {
     this.delete.emit(this.item);
@@ -30,8 +41,7 @@ export class ArticleHeaderComponent implements OnInit, OnDestroy {
 
   // 初始化
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+    this.newTitle = this.item.title;
   }
 
   // 元件摧毀之前執行。很少再使用
