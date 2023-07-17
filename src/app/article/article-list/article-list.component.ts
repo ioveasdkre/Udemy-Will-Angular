@@ -16,16 +16,23 @@ export class ArticleListComponent implements OnInit {
     });
   }
 
+  changeTitle($event: any) {
+    this.data = this.data.map((item) => {
+      if (item.id === $event.id) {
+        return Object.assign({}, item, $event);
+      }
+      return item;
+    });
+  }
+
   ngOnInit(): void {
     this.data = [
       {
         id: 1,
         href: 'http://blog.miniasp.com/post/2016/04/30/Visual-Studio-Code-from-Command-Prompt-notes.aspx',
-        subject: {
-          title:
-            '從命令提示字元中開啟 Visual Studio Code 如何避免顯示惱人的偵錯訊息',
-          subtitle: 'test',
-        },
+        title:
+          '從命令提示字元中開啟 Visual Studio Code 如何避免顯示惱人的偵錯訊息',
+        subtitle: 'test',
         date: '2016/04/30 18:05',
         author: 'Will 保哥',
         category: 'Visual Studio',
@@ -36,6 +43,7 @@ export class ArticleListComponent implements OnInit {
       {
         id: 2,
         href: 'http://blog.miniasp.com/post/2016/03/22/Does-Certification-Exam-Useful.aspx',
+        title: '考證照真的沒用嗎？一個從業 20 年的 IT 主管告訴你他怎麼看！',
         date: '2016/03/22 19:28',
         author: 'Will 保哥',
         category: '心得分享',
@@ -47,10 +55,8 @@ export class ArticleListComponent implements OnInit {
       {
         id: 3,
         href: 'http://blog.miniasp.com/post/2016/03/14/ASPNET-MVC-Developer-Note-Part-28-Understanding-ModelState.aspx',
-        subject: {
-          title: 'ASP.NET MVC 開發心得分享 (28)：深入瞭解 ModelState 內部細節',
-          subtitle: 'test',
-        },
+        title: 'ASP.NET MVC 開發心得分享 (28)：深入瞭解 ModelState 內部細節',
+        subtitle: 'test',
         date: '2016/03/14 12:14',
         author: 'Will 保哥',
         category: 'ASP.NET MVC',
@@ -61,10 +67,8 @@ export class ArticleListComponent implements OnInit {
       {
         id: 4,
         href: 'http://blog.miniasp.com/post/2016/03/06/ASPNET-MVC-5-View-Roslyn-problem-workaround.aspx',
-        subject: {
-          title: 'ASP.NET MVC 5.2.3 的 View 使用 Roslyn (C# 6.0) 編譯時的問題',
-          subtitle: 'test',
-        },
+        title: 'ASP.NET MVC 5.2.3 的 View 使用 Roslyn (C# 6.0) 編譯時的問題',
+        subtitle: 'test',
         date: '2016/03/06 17:11',
         author: 'Will 保哥',
         category: 'ASP.NET MVC',

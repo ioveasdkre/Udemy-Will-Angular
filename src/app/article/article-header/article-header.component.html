@@ -1,11 +1,26 @@
 <header class="post-header">
   <h2 class="post-title">
-    <a [href]="item.href">{{
-      item.subject?.title | lowercase | slice : -20
-    }}</a>
-    {{ item.subject?.subtitle }}
-    <!-- {{ item['subject']?.subtitle }}
-            {{ $any(item).subject?.subtitle }} -->
+    <a *ngIf="!isEdit" [href]="item.href">{{ newTitle }}</a>
+    <!-- 雙向繫結 不建議的做法，因透過 父元件去異動資料會比較好 -->
+    <!-- <input
+      *ngIf="isEdit"
+      type="text"
+      size="70px"
+      [(ngModel)]="item.subject.title"
+    /> -->
+    <input
+    #inputElement
+      *ngIf="isEdit"
+      type="text"
+      size="70px"
+      [value]="newTitle"
+      (keyup.enter)="doEdit($event.target.value)"
+      (keyup.escape)="$event.target.value = item.title; isEdit=false"
+    />
+
+    <!-- {{ item.subject?.subtitle }}
+      {{ item['subject']?.subtitle }}
+      {{ $any(item).subject?.subtitle }} -->
   </h2>
   <div class="post-info clearfix">
     <span class="post-date"
@@ -23,6 +38,10 @@
         {{ item.category }}
       </a></span
     >
-    <span><button (click)="deleteArticle()">刪除文章</button></span>
+    <span
+      ><button (click)="deleteArticle()">刪除文章</button>
+      <button *ngIf="!isEdit" (click)="isEdit = true">編輯標題</button>
+      <button *ngIf="isEdit" (click)="isEdit = false">取消編輯</button>
+    </span>
   </div>
 </header>
