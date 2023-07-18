@@ -8,14 +8,27 @@
       size="70px"
       [(ngModel)]="item.subject.title"
     /> -->
-    <input
-    #inputElement
+
+    <!-- 單向繫結 -->
+    <!-- <input
+      #inputElement
       *ngIf="isEdit"
       type="text"
       size="70px"
       [value]="newTitle"
-      (keyup.enter)="doEdit($event.target.value)"
-      (keyup.escape)="$event.target.value = item.title; isEdit=false"
+      (keyup.enter)="doEdit($event)"
+      (keyup.escape)="doCancel($event); isEdit = false"
+    /> -->
+
+    <!-- 雙向繫結，需透過 ngOnChanges 產生新的物件，才不會異動到原始資料 -->
+    <input
+      #inputElement
+      *ngIf="isEdit"
+      type="text"
+      size="70px"
+      [(ngModel)]="item.title"
+      (keyup.enter)="doEdit2()"
+      (keyup.escape)="doCancel2()"
     />
 
     <!-- {{ item.subject?.subtitle }}
@@ -41,7 +54,7 @@
     <span
       ><button (click)="deleteArticle()">刪除文章</button>
       <button *ngIf="!isEdit" (click)="isEdit = true">編輯標題</button>
-      <button *ngIf="isEdit" (click)="isEdit = false">取消編輯</button>
+      <button *ngIf="isEdit" (click)="doCancel2()">取消編輯</button>
     </span>
   </div>
 </header>
