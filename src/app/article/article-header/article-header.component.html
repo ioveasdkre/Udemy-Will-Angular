@@ -1,11 +1,39 @@
 <header class="post-header">
   <h2 class="post-title">
-    <a [href]="item.href">{{
-      item.subject?.title | lowercase | slice : -20
-    }}</a>
-    {{ item.subject?.subtitle }}
-    <!-- {{ item['subject']?.subtitle }}
-            {{ $any(item).subject?.subtitle }} -->
+    <a *ngIf="!isEdit" [href]="item.href">{{ newTitle }}</a>
+    <!-- 雙向繫結 不建議的做法，因透過 父元件去異動資料會比較好 -->
+    <!-- <input
+      *ngIf="isEdit"
+      type="text"
+      size="70px"
+      [(ngModel)]="item.subject.title"
+    /> -->
+
+    <!-- 單向繫結 -->
+    <!-- <input
+      #inputElement
+      *ngIf="isEdit"
+      type="text"
+      size="70px"
+      [value]="newTitle"
+      (keyup.enter)="doEdit($event)"
+      (keyup.escape)="doCancel($event); isEdit = false"
+    /> -->
+
+    <!-- 雙向繫結，需透過 ngOnChanges 產生新的物件，才不會異動到原始資料 -->
+    <input
+      #inputElement
+      *ngIf="isEdit"
+      type="text"
+      size="70px"
+      [(ngModel)]="item.title"
+      (keyup.enter)="doEdit2()"
+      (keyup.escape)="doCancel2()"
+    />
+
+    <!-- {{ item.subject?.subtitle }}
+      {{ item['subject']?.subtitle }}
+      {{ $any(item).subject?.subtitle }} -->
   </h2>
   <div class="post-info clearfix">
     <span class="post-date"
@@ -23,6 +51,10 @@
         {{ item.category }}
       </a></span
     >
-    <span><button (click)="deleteArticle()">刪除文章</button></span>
+    <span
+      ><button (click)="deleteArticle()">刪除文章</button>
+      <button *ngIf="!isEdit" (click)="isEdit = true">編輯標題</button>
+      <button *ngIf="isEdit" (click)="doCancel2()">取消編輯</button>
+    </span>
   </div>
 </header>
