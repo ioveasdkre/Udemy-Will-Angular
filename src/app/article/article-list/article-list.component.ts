@@ -6,13 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-list.component.css'],
 })
 export class ArticleListComponent implements OnInit {
+  counter: number = 0;
   data: Array<any> = [];
 
   constructor() {}
 
+  // 單向繫結
   doDelete(item: any) {
     this.data = this.data.filter((value) => {
       return value !== item;
+    });
+  }
+
+  // 雙向繫結，需透過 ngOnChanges 產生新的物件，才不會異動到原始資料
+  doDelete2(item: any) {
+    this.data = this.data.filter((value) => {
+      return value.id !== item.id;
     });
   }
 
@@ -26,6 +35,10 @@ export class ArticleListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.counter++;
+    }, 2000); // 查看 ngChanges 觸發時機
+
     this.data = [
       {
         id: 1,
