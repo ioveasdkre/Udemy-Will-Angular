@@ -20,15 +20,14 @@ export class ArticleBodyComponent implements OnInit, OnChanges {
   counter: any;
 
   constructor() {
-    console.log('ArticleBodyComponent: constructor');
+    // console.log('ArticleBodyComponent: constructor');
   }
 
   ngOnInit(): void {
-    console.log('ArticleBodyComponent: ngOnInit');
+    // console.log('ArticleBodyComponent: ngOnInit');
   }
   ngOnChanges(changes: any): void {
-    console.log('ArticleBodyComponent: ngOnChanges');
-    console.log(changes);
-
+    // console.log('ArticleBodyComponent: ngOnChanges');
+    // console.log(changes);
   }
 }
