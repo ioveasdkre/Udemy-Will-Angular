@@ -5,6 +5,8 @@ import { ArticleHeaderComponent } from './article-header/article-header.componen
 import { ArticleBodyComponent } from './article-body/article-body.component';
 import { FormsModule } from '@angular/forms';
 import { DataService } from './data.service';
+import { Data2Service } from './data2.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,8 +14,8 @@ import { DataService } from './data.service';
     ArticleHeaderComponent,
     ArticleBodyComponent,
   ],
-  imports: [CommonModule, FormsModule],
-  providers: [DataService],
+  imports: [CommonModule, FormsModule, HttpClientModule],
+  providers: [DataService, Data2Service],
   exports: [ArticleListComponent], // 匯出元件
 })
 export class ArticleModule {}

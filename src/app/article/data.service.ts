@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+// 是否可被注入其他的服務元件
 @Injectable({
   providedIn: 'root',
 })
