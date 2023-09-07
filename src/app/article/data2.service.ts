@@ -14,14 +14,14 @@ export class Data2Service {
   }
 
   getData() {
-    return this.http.get('api/articles.json');
+    return this.http.get('/api/articles.json');
   }
 
   doDelete2(item: any) {
-    return this.http.delete(`api/articles/${item?.id}`);
+    return this.http.delete(`/api/articles/${item?.id}`);
   }
 
   doModify(post: any) {
-    return this.http.put(`api/articles/${post?.id}`, post);
+    return this.http.put(`/api/articles/${post?.id}`, post);
   }
 }
