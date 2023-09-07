@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   title = 'demol';
   url = 'http://blog.miniasp.com/';
-  imgUrl = '/assets/images/logo.png';
+  imgUrl = 'assets/images/logo.png';
   counter = 0;
 
   getClass() {
