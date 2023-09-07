@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-gitHubPages": "ng build --base-href /Udemy-Will-Angular/ && npx ngh --dir=dist/demol",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
